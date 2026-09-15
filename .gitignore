@@ -26,6 +26,12 @@ wheels/
 # Jupyter
 .ipynb_checkpoints
 
+# Node & Frontend
+node_modules/
+dist/
+dist-ssr/
+*.local
+
 # Pytest
 .pytest_cache/
 

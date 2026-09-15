@@ -130,15 +130,43 @@ Evaluates performance on the held-out 15% test set, generates confusion matrices
 python src/evaluate.py
 ```
 
-### 5. Run Streamlit Application (Deployment Layer)
+### 5. Run Web Applications (Deployment Layer)
 
-Launch the interactive web application:
+You have two interactive deployment interfaces available:
+
+#### A. Modern React + FastAPI Web Application (Recommended)
+Launch both the high-throughput FastAPI backend (port 8000) and the modern React frontend (port 5173):
+
+```bash
+# Unified launcher (starts backend + frontend)
+python scripts/run_app.py
+```
+
+Or run them individually in separate terminals:
+```bash
+# Terminal 1: Start FastAPI REST API Server
+python -m uvicorn server.api:app --host 127.0.0.1 --port 8000
+
+# Terminal 2: Start React Frontend
+cd frontend
+npm run dev
+```
+
+Open `http://localhost:5173` to access the ultra-clean React dashboard featuring:
+- **Interactive Classifier**: Real-time keystroke predictions, category badge gradients, animated confidence score rings.
+- **Review Alert System**: Visual warning banners when confidence drops below user-selected review thresholds.
+- **Similar Questions Explorer**: Cosine-similarity nearest neighbor retrieval with match percentages.
+- **Bulk Batch Testing**: High-throughput multi-line question testing with real-time statistics and CSV export.
+- **Model Evaluation Dashboard**: Embedded visual benchmark comparison and confusion matrix inspectors.
+- **Competency Guide**: Comprehensive reference for all 5 topics with real-world examples.
+- **Theme Switcher**: Polished light and dark mode toggling.
+
+#### B. Streamlit Application
+Launch the standalone Streamlit app on port 8501:
 
 ```bash
 streamlit run app/app.py
 ```
-
-Open `http://localhost:8501` in your browser.
 
 ---
 
