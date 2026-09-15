@@ -3,7 +3,7 @@
  */
 
 // Support dynamic relative URLs in production and localhost:8000 in Vite dev mode
-const API_BASE_URL =
+export const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL !== undefined
     ? import.meta.env.VITE_API_BASE_URL
     : (typeof window !== 'undefined' && window.location.port === '5173')

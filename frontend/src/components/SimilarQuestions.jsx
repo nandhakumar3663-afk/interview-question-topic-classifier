@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 const CATEGORY_COLOR_MAP = {
   'Technical Knowledge': 'var(--cat-tech)',
@@ -9,11 +9,11 @@ const CATEGORY_COLOR_MAP = {
   'Role-Specific Skills': 'var(--cat-role)',
 };
 
-export default function SimilarQuestions({ questions = [] }) {
+export default function SimilarQuestions({ questions = [], onSelectQuestion }) {
   if (!questions || questions.length === 0) {
     return (
-      <div style={{ color: 'var(--text-muted)', fontSize: '0.86rem' }}>
-        No close historical matches found in training database.
+      <div className="similar-empty-hint">
+        No close matches found in the 54,000-question database.
       </div>
     );
   }
@@ -24,12 +24,23 @@ export default function SimilarQuestions({ questions = [] }) {
         const catColor = CATEGORY_COLOR_MAP[item.topic] || 'var(--primary-color)';
 
         return (
-          <div key={idx} className="similar-card-item">
+          <div
+            key={idx}
+            className="similar-card-item interactive"
+            onClick={() => onSelectQuestion && onSelectQuestion(item.question)}
+            title="Click to test this question"
+          >
             <div className="similar-meta">
               <span className="similar-badge" style={{ backgroundColor: catColor }}>
                 {item.topic}
               </span>
-              <span className="similar-score">Match: {item.similarity_pct}</span>
+              <div className="similar-right-meta">
+                <span className="similar-score">Similarity: {item.similarity_pct}</span>
+                <span className="test-prompt-chip">
+                  <span>Test</span>
+                  <ArrowUpRight size={12} />
+                </span>
+              </div>
             </div>
             <p className="similar-text">{item.question}</p>
           </div>
