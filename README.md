@@ -171,6 +171,39 @@ streamlit run app/app.py
 
 ---
 
+## 🌐 Cloud Deployment (Render.com & Docker)
+
+The application is pre-configured with `render.yaml` and a production multi-stage `Dockerfile` for free, 1-click cloud deployment on [Render.com](https://render.com).
+
+### Option 1: 1-Click Render Blueprint (Recommended)
+1. Fork or push this repository to your GitHub account: `https://github.com/nandhakumar3663-afk/interview-question-topic-classifier.git`
+2. Log in to [dashboard.render.com](https://dashboard.render.com).
+3. Click **New +** -> **Blueprint**.
+4. Select your `interview-question-topic-classifier` repository.
+5. Render will automatically read `render.yaml`, set up the Python 3.11 environment, install dependencies, and launch the unified web service on a free public HTTPS URL (`https://<your-app>.onrender.com`).
+
+### Option 2: Manual Render Web Service
+1. In Render Dashboard, click **New +** -> **Web Service**.
+2. Connect your GitHub repository.
+3. Configure the service settings:
+   - **Environment**: `Python 3`
+   - **Build Command**: `pip install -r requirements.txt`
+   - **Start Command**: `uvicorn server.api:app --host 0.0.0.0 --port $PORT`
+   - **Instance Type**: `Free`
+4. Click **Create Web Service**.
+
+### Option 3: Run with Docker Locally or on Any Cloud
+```bash
+# Build the production container
+docker build -t interview-classifier .
+
+# Run container on port 8000
+docker run -p 8000:8000 interview-classifier
+```
+Visit `http://localhost:8000` to access the full-stack React application.
+
+---
+
 ## 💻 CLI Inference & Testing
 
 Test single questions directly from the command line:
