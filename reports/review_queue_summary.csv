@@ -1,0 +1,6 @@
+metric,value
+Total In Review,2460.0
+Low Confidence (<0.50),1169.0
+Moderate Confidence (0.50-0.75),1291.0
+Mean Confidence,0.5127
+Median Confidence,0.5082

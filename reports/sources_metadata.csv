@@ -1,0 +1,5 @@
+dataset_name,url,license,config,split
+Omarrran/StackPulse_778K_QnA_Code_dataset,https://huggingface.co/datasets/Omarrran/StackPulse_778K_QnA_Code_dataset,Apache-2.0,high_quality,train
+stindardlogic/coding-interview-sft-100k,https://huggingface.co/datasets/stindardlogic/coding-interview-sft-100k,Apache-2.0,,train
+Vineeshsuiii/Software_Engineering_interview_datasets,https://huggingface.co/datasets/Vineeshsuiii/Software_Engineering_interview_datasets,MIT,,train
+Public Behavioral & Leadership Interview Corpora,https://github.com/yangshun/tech-interview-handbook,MIT,,curated

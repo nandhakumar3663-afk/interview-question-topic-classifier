@@ -1,0 +1,65 @@
+# EMP-26 Dataset Generation Pipeline Configuration
+pipeline:
+  name: "EMP-26 Interview Question Topic Classifier Pipeline"
+  version: "1.0.0"
+  random_seed: 42
+
+splits:
+  train_ratio: 0.80
+  validation_ratio: 0.10
+  test_ratio: 0.10
+
+targets:
+  total_target: 54000
+  per_class:
+    "Technical Knowledge": 12000
+    "Communication": 10000
+    "Problem Solving": 12000
+    "Leadership": 10000
+    "Role-Specific Skills": 10000
+
+models:
+  embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
+  batch_size: 64
+  cache_dir: "data/cache"
+
+thresholds:
+  confidence_accept: 0.75
+  confidence_review_min: 0.50
+  near_duplicate_similarity: 0.90
+
+text_constraints:
+  min_question_chars: 15
+  max_question_chars: 600
+
+domains:
+  role_specific:
+    - "Frontend Development"
+    - "Backend Development"
+    - "Full Stack Development"
+    - "Data Science"
+    - "Machine Learning"
+    - "DevOps"
+    - "Cloud Engineering"
+    - "Cybersecurity"
+    - "Database Engineering"
+    - "Mobile Development"
+    - "Software Testing"
+    - "Embedded Systems"
+
+paths:
+  data_raw: "data/raw"
+  data_cleaned: "data/cleaned"
+  data_labeled: "data/labeled"
+  data_review: "data/review"
+  data_train: "data/train"
+  data_validation: "data/validation"
+  data_test: "data/test"
+  data_cache: "data/cache"
+  reports: "reports"
+  master_parquet: "data/labeled/EMP26_master_dataset.parquet"
+  master_csv: "data/labeled/EMP26_master_dataset.csv"
+  train_csv: "data/train/EMP26_train.csv"
+  validation_csv: "data/validation/EMP26_validation.csv"
+  test_csv: "data/test/EMP26_test.csv"
+  ambiguous_csv: "data/review/ambiguous_questions.csv"

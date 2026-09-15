@@ -41,3 +41,7 @@ models/embedding_classifier.joblib
 # OS
 .DS_Store
 Thumbs.db
+
+# Pipeline caches
+data/cache/
+data/cleaned/

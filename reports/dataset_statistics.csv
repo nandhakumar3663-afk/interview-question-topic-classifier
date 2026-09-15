@@ -1,0 +1,6 @@
+Category,Total_Count,Train_Count,Val_Count,Test_Count,Real_Count,Synthetic_Count,Real_Percentage,Mean_Quality,Mean_Confidence
+Technical Knowledge,12000,10997,501,502,1003,10997,8.4,0.934,0.954
+Communication,10000,9704,148,148,296,9704,3.0,0.929,0.949
+Problem Solving,12000,11747,126,127,253,11747,2.1,0.93,0.954
+Leadership,10000,9682,159,159,318,9682,3.2,0.928,0.948
+Role-Specific Skills,10000,9708,146,146,292,9708,2.9,0.93,0.954
