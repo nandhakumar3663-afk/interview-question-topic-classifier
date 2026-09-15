@@ -9,7 +9,7 @@ venv/
 ENV/
 build/
 develop-eggs/
-dist/
+/dist/
 downloads/
 eggs/
 .eggs/
@@ -28,9 +28,9 @@ wheels/
 
 # Node & Frontend
 node_modules/
-dist/
 dist-ssr/
 *.local
+!frontend/dist/**
 
 # Pytest
 .pytest_cache/

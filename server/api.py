@@ -11,6 +11,7 @@ import json
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 # Ensure project root is in sys.path
@@ -212,6 +213,28 @@ def get_metrics():
             "model_comparison": "/reports/model_comparison.png",
         },
     }
+
+
+FRONTEND_DIST = PROJECT_ROOT / "frontend" / "dist"
+
+# If built frontend exists, mount static assets and serve SPA
+if FRONTEND_DIST.exists():
+    assets_dir = FRONTEND_DIST / "assets"
+    if assets_dir.exists():
+        app.mount("/assets", StaticFiles(directory=str(assets_dir)), name="frontend-assets")
+
+    @app.get("/{full_path:path}")
+    async def serve_spa(full_path: str):
+        # Don't intercept API, reports, or docs routes
+        if full_path.startswith("api/") or full_path.startswith("reports/") or full_path in ("docs", "redoc", "openapi.json"):
+            raise HTTPException(status_code=404, detail="Not Found")
+
+        file_path = FRONTEND_DIST / full_path
+        if file_path.is_file():
+            return FileResponse(file_path)
+
+        # SPA fallback to index.html
+        return FileResponse(FRONTEND_DIST / "index.html")
 
 
 if __name__ == "__main__":

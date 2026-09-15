@@ -2,7 +2,13 @@
  * API client service for connecting React frontend to the FastAPI backend.
  */
 
-const API_BASE_URL = 'http://127.0.0.1:8000';
+// Support dynamic relative URLs in production and localhost:8000 in Vite dev mode
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL !== undefined
+    ? import.meta.env.VITE_API_BASE_URL
+    : (typeof window !== 'undefined' && window.location.port === '5173')
+    ? 'http://127.0.0.1:8000'
+    : '';
 
 export async function checkApiHealth() {
   try {
