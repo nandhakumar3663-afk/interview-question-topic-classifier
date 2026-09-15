@@ -3,6 +3,7 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Streamlit App](https://img.shields.io/badge/Streamlit-App-FF4B4B.svg)](https://streamlit.io/)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/nandhakumar3663-afk/interview-question-topic-classifier)
 
 An end-to-end lightweight, CPU-friendly Machine Learning system that classifies software engineering interview questions into 5 core competencies with confidence scoring, low-confidence human review flagging, semantic similar-question retrieval, and an interactive Streamlit application.
 
